@@ -32,7 +32,7 @@ if !has('nvim')
   set viminfo='100,n$HOME/.viminfo
 endif
 " Set default shell to execute functions
-set shell=sh
+" set shell=sh
 "" Modeline
 " Respect modeline in files
 set modeline
