@@ -14,7 +14,7 @@
     let g:airline_powerline_fonts=1
   endif
   " Specify theme for airline
-  let g:airline_theme='tomorrow'
+  let g:airline_theme='cool'
   " Show warning and error counts from neomake in vim-airline
   let g:airline#extensions#neomake#enabled=1
   " Show warning and error counts from ALE in vim-airline
@@ -35,6 +35,7 @@
   Plug 'mhinz/vim-startify'
   " A list of files to bookmark
   let g:startify_bookmarks=[
+  \ '~/coding/',
   \ '~/.vim/vimrc',
   \ '~/.vim/plugins.vim',
   \]
@@ -45,4 +46,22 @@
   \ 'plugged/.*/doc',
   \ 'bundle/.*/doc',
   \]
+  " A custom header provided as a string
+  let g:startify_custom_header=[
+    \ '                   -@',
+    \ '                  .##@',
+    \ '                 .####@',
+    \ '                .@#####@',
+    \ '               .#*######@',
+    \ '              .##@o@#####@           __  __ /\_\    ___ ___',
+    \ '             /############@         /\ \/\ \\/\ \ /'' __` __`\',
+    \ '            /##############@        \ \ \_/ |\ \ \/\ \/\ \/\ \',
+    \ '           @######@**%######@        \ \___/  \ \_\ \_\ \_\ \_\',
+    \ '          @######`     %#####o        \/__/    \/_/\/_/\/_/\/_/',
+    \ '         @######@       ######%',
+    \ '       -@#######h       ######@.`',
+    \ '      /#####h**``       `**%@####@',
+    \ '     @H@*`                    `*%#@',
+    \ '    *`                            `*',
+    \]
 "" }}}
