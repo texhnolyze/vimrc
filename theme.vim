@@ -18,5 +18,5 @@ endif
 " colorscheme summerfruit256
 " colorscheme gruvbox
 " colorscheme seoul256-light
-" colorscheme molokai
-colorscheme monokai-chris
+" colorscheme Monokai
+colorscheme molokai
