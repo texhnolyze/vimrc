@@ -3,6 +3,11 @@
 " Maintained by Claud D. Park <posquit0.bj@gmail.com>
 " http://www.posquit0.com/
 
+"" Plugin: Vim Javascript {{{
+  " Overwrite vim-javascript with own for now
+  " TODO remove when pull request was merged
+  Plug 'texhnolyze/vim-javascript'
+"" }}}
 
 "" Plugin: Vim Polyglot {{{
   " A collection of language packs for Vim
@@ -309,7 +314,7 @@
 
 "" Plugin: Javascript Libraries Syntax {{{
   " Syntax file for JavaScript libraries
-  Plug 'othree/javascript-libraries-syntax.vim'
+  " Plug 'othree/javascript-libraries-syntax.vim'
   " Set up used libraries
   let g:used_javascript_libs='react,jquery,underscore,handlebars'
 "" }}}
