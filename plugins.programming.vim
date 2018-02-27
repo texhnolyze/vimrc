@@ -3,12 +3,6 @@
 " Maintained by Claud D. Park <posquit0.bj@gmail.com>
 " http://www.posquit0.com/
 
-"" Plugin: Vim Javascript {{{
-  " Overwrite vim-javascript with own for now
-  " TODO remove when pull request was merged
-  Plug 'texhnolyze/vim-javascript'
-"" }}}
-
 "" Plugin: Vim Polyglot {{{
   " A collection of language packs for Vim
   Plug 'sheerun/vim-polyglot'
@@ -16,6 +10,8 @@
   let g:vim_json_syntax_conceal=0
   " Enable syntax highlighting for JSDocs
   let g:javascript_plugin_jsdoc=1
+	" Improve syntax highlighting
+  hi def link jsFuncCall Function
 "" }}}
 
 "" Plugin: ALE {{{
