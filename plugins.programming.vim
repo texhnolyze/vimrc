@@ -206,6 +206,10 @@
   autocmd CompleteDone * pclose!
   " Disable the preview window
   set completeopt-=preview
+
+  " Enable tabbing through autocomplete suggestions
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "" }}}
 
 "" Plugin: Language Servers {{{
@@ -246,12 +250,32 @@
   " Snippet engine for Vim
   Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
   " Configure keys trigerring UltiSnips
-  let g:UltiSnipsExpandTrigger='<Tab>'
-  let g:UltiSnipsJumpForwardTrigger='<Tab>'
-  let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
+  let g:UltiSnipsJumpForwardTrigger='<C-n>'
+  let g:UltiSnipsJumpBackwardTrigger='<C-b>'
   let g:UltiSnipsListSnippets='<Tab>l'
-  " If you want :UltiSnipsEdit to split your window.
+  " Enable of usage of CR for both newlines and snippet completion
+  let g:UltiSnipsExpandTrigger='<NOP>'
+  let g:ulti_expand_res=0
+  inoremap <silent> <CR> <C-r>=<SID>ExpandSnippetOrReturnEmptyString()<CR>
+  function! s:ExpandSnippetOrReturnEmptyString()
+    if pumvisible()
+      let snippet=UltiSnips#ExpandSnippet()
+      if g:ulti_expand_res > 0
+          return snippet
+      else
+          return "\<C-y>\<CR>"
+      endif
+    else
+        return "\<CR>"
+    endif
+  endfunction
+
+  " If you want :UltiSnipsEdit to split your window
   let g:UltiSnipsEditSplit='vertical'
+
+  "Set save and search dirs for private snippets
+  let g:UltiSnipsSnippetsDir='~/.vim/snippet-definitions/'
+  let g:UltiSnipsSnippetDirectories=['UltiSnips', 'snippet-definitions']
 "" }}}
 
 "" Plugin: Endwise {{{
