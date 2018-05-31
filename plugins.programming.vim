@@ -153,21 +153,22 @@
   " Dark powered asynchronous completion framework
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
+    " TODO: remove if replacable by LanguageClient
     " Javascript source for Deoplete
-    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript'] }
-    " Add extra filetypes
-    let g:tern#filetypes=['jsx', 'javascript.jsx', 'vue']
-    " Use tern_for_vim
-    let g:tern#command=['tern']
-    let g:tern#arguments=['--persistent']
-    " Include documentation strings (if found) in the result data
-    let g:deoplete#sources#ternjs#docs=1
-    " Use a case-insensitive compare
-    let g:deoplete#sources#ternjs#case_insensitive=1
-    " Sort the result set
-    let g:deoplete#sources#ternjs#sort=1
-    " Ignore JavaScript keywords when completing
-    let g:deoplete#sources#ternjs#include_keywords=0
+    " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript'], 'do': 'npm install -g tern' }
+    " " Add extra filetypes
+    " let g:tern#filetypes=['jsx', 'javascript.jsx', 'vue']
+    " " Use tern_for_vim
+    " let g:tern#command=['tern']
+    " let g:tern#arguments=['--persistent']
+    " " Include documentation strings (if found) in the result data
+    " let g:deoplete#sources#ternjs#docs=1
+    " " Use a case-insensitive compare
+    " let g:deoplete#sources#ternjs#case_insensitive=1
+    " " Sort the result set
+    " let g:deoplete#sources#ternjs#sort=1
+    " " Ignore JavaScript keywords when completing
+    " let g:deoplete#sources#ternjs#include_keywords=0
 
     " Python source for Deoplete
     Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
@@ -215,25 +216,29 @@
 "" Plugin: LanguageClient(NeoVIM only) {{{
   " Support Language Server Protocol for NeoVIM
   if has('nvim')
-    " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
     " Automatically start language servers
     let g:LanguageClient_autoStart=1
     " Define commands to execute to start language servers
     let g:LanguageClient_serverCommands={
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['pyls'],
+    \ 'typescript': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
+    \ 'typescript.tsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
+    \ 'tsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ 'javascript': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ 'javascript.jsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ 'jsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ }
+    "" \ 'python': ['pyls'],
+
     " Disable diagnostics integration
     let g:LanguageClient_diagnosticsEnable=0
     " Set selection UI used when there are multiple entries
     let g:LanguageClient_selectionUI='fzf'
 
-    " nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-    " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-    " nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
   endif
 "" }}}
 
