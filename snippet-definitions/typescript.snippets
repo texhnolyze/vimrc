@@ -1,0 +1,16 @@
+snippet des "describe (ts)" b
+describe("${1:description}", () => {
+	$0
+});
+endsnippet
+
+snippet it "it (ts)" b
+it("${1:description}", () => {
+	$0
+});
+endsnippet
+
+snippet expe "expect (ts)" b
+expect($1).toEqual($0)
+endsnippet
+
