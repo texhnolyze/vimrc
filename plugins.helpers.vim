@@ -57,3 +57,8 @@
   Plug 'tpope/vim-repeat'
 "" }}}
 
+"" Plugin: Repeat.vim {{{
+  " Enable saving vim sessions to be
+  " resurrected with tmux-resurrect
+  Plug 'tpope/vim-obsession'
+"" }}}
