@@ -1,8 +1,4 @@
 " plugins.vcs.vim
-"
-" Maintained by Claud D. Park <posquit0.bj@gmail.com>
-" http://www.posquit0.com/
-
 
 "" Plugin: Vim Git {{{
   " For syntax highlighting and other Git niceties

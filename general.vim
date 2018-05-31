@@ -1,8 +1,4 @@
 " general.vim
-"
-" Maintained by Claud D. Park <posquit0.bj@gmail.com>
-" http://www.posquit0.com/
-
 
 " Make Vim more useful
 set nocompatible

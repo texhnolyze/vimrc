@@ -1,8 +1,4 @@
 " plugins.search.vim
-"
-" Maintained by Claud D. Park <posquit0.bj@gmail.com>
-" http://www.posquit0.com/
-
 
 "" Plugin: CtrlP {{{
   " Full path fuzzy file, buffer, mru, tag finder for Vim

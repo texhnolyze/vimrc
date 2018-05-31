@@ -1,7 +1,4 @@
 " plugins.programming.vim
-"
-" Maintained by Claud D. Park <posquit0.bj@gmail.com>
-" http://www.posquit0.com/
 
 "" Plugin: Vim Polyglot {{{
   " A collection of language packs for Vim

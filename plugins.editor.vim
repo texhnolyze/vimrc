@@ -1,8 +1,4 @@
 " plugins.editor.vim
-"
-" Maintained by Claud D. Park <posquit0.bj@gmail.com>
-" http://www.posquit0.com/
-
 
 "" Plugin: Vim Better Whitespace {{{
   " All trailing whitespace characters to be highlighted
