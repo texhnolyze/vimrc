@@ -108,9 +108,9 @@
   " Syntax checking for Vim with external syntax checker
   " TODO: Too slow because of synchronous job
   " Plug 'scrooloose/syntastic'
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
+  " set statusline+=%#warningmsg#
+  " set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
   let g:syntastic_always_populate_loc_list=1
   let g:syntastic_loc_list_height=5
   let g:syntastic_auto_loc_list=1
