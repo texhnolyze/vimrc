@@ -8,12 +8,28 @@ set number
 " Enable relative number for line
 " (Constantly computing the relative nubmers is expensive)
 set relativenumber
-" Show ruler
-set ruler
-" Always show tab pannel
-set showtabline=2
-" Show the command typing
-set showcmd
+" Check if oni neovim gui is used
+if exists("g:gui_oni")
+  " Do not show ruler
+  set noruler
+  " Never show tab pannel
+  set showtabline=0
+  " Do not show command typing
+  set noshowcmd
+  " Never show status line
+  set laststatus=0
+else
+  " Show ruler
+  set ruler
+  " Always show tab pannel
+  set showtabline=2
+  " Show command typing
+  set showcmd
+  " Native customized statusline, if airline is not available
+  set statusline=%1*%{winnr()}\ %*%<\ %f\ %h%m%r%=%l,%c%V\ (%P)
+  " Always show status line.
+  set laststatus=2
+endif
 " Show matching brackets
 set showmatch
 " Bracket blinking
@@ -39,10 +55,6 @@ set novisualbell
 set noerrorbells
 " Minimal number of screen lines to keep above and below the cursor
 set scrolloff=3
-" Native customized statusline, if airline is not available
-set statusline=%1*%{winnr()}\ %*%<\ %f\ %h%m%r%=%l,%c%V\ (%P)
-" Always show status line.
-set laststatus=2
 " No conceal
 set conceallevel=0
 " Use a block cursor in normal mode, i-beam cursor in insertmode
