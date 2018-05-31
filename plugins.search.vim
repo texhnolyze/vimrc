@@ -23,6 +23,7 @@
   " Full path fuzzy file, buffer, mru, tag finder for Vim
   " A general-purpose command-line fuzzy finder
   Plug 'junegunn/fzf', { 'do': 'yes \| ./install --all --no-update-rc' }
+  Plug 'junegunn/fzf.vim'
 "" }}}
 
 "" Plugin: Easymotion {{{
