@@ -41,7 +41,7 @@
   " Shortcut for fast wrapping the word
   let g:AutoPairsShortcutFastWrap='<C-e>'
   " Enable FlyMode
-  let g:AutoPairsFlyMode=1
+  let g:AutoPairsFlyMode=0
   " Insert the key at the Fly Mode jumped postion
   let g:AutoPairsShortcutBackInsert='<C-b>'
 "" }}}
