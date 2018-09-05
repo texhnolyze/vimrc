@@ -4,3 +4,8 @@
   " Browse Github events in Vim
   Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 "" }}}
+
+"" Plugin: WakaTime {{{
+  " Productivity metrics, goals, leaderboards, and automatic time tracking
+  Plug 'wakatime/vim-wakatime'
+"" }}}
