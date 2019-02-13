@@ -11,7 +11,7 @@
       let g:airline_powerline_fonts=1
     endif
     " Specify theme for airline
-    let g:airline_theme='cool'
+    let g:airline_theme='tomorrow'
     " Show warning and error counts from neomake in vim-airline
     let g:airline#extensions#neomake#enabled=1
     " Show warning and error counts from ALE in vim-airline
@@ -19,6 +19,11 @@
     let g:airline#extensions#tabline#enabled=1
     let g:airline#extensions#tabline#left_sep=''
     let g:airline#extensions#tabline#left_alt_sep='|'
+    " Enable displaying tabs, regardless of number
+    let g:airline#extensions#tabline#show_tabs=1
+    " Disable displaying buffers with a single tab
+    let g:airline#extensions#tabline#show_buffers=0
+    let g:airline#extensions#tabline#formatter='default'
     " Customize a left side of airline
     let g:airline_section_b='%{airline#util#wrap(airline#extensions#hunks#get_hunks(),0)}%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
     " Customize a right side of airline
