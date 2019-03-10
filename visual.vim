@@ -19,6 +19,8 @@ if exists("g:gui_oni")
   " Never show status line
   set laststatus=0
 else
+  " Always show signcolumns
+  set signcolumn=yes
   " Show ruler
   set ruler
   " Always show tab pannel
