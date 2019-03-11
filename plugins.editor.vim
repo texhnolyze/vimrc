@@ -11,6 +11,11 @@
   autocmd BufWritePre * StripWhitespace
 "" }}}
 
+"" Plugin: Targets {{{
+  " Provides additional text objects
+  Plug 'wellle/targets.vim'
+"" }}}
+
 "" Plugin: EditorConfig {{{
   " EditorConfig plugin for Vim
   Plug 'editorconfig/editorconfig-vim'
