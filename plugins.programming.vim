@@ -20,6 +20,7 @@
   let g:ale_linters={
   \ 'javascript': ['eslint'],
   \ 'python': ['flake8'],
+  \ 'terraform': ['tflint'],
   \ }
   " Set aliases from one filetype to another
   let g:ale_linter_aliases={
@@ -148,7 +149,12 @@
   " Make test commands execute using other strategy
   let test#strategy='basic'
   " Exit after testing with jest
-  let test#javascript#jest#options='--forceExit'
+  let test#javascript#jest#options='--passWithNoTests'
+  nnoremap <silent> <leader>tf :TestFile<CR>
+  nnoremap <silent> <leader>tn :TestNearest<CR>
+  nnoremap <silent> <leader>ts :TestSuit<CR>
+  nnoremap <silent> <leader>tl :TestLast<CR>
+  nnoremap <silent> <leader>tv :TestVisit<CR>
 "" }}}
 
 "" Plugin: EchoDoc {{{
@@ -224,7 +230,12 @@
 
 "" Plugin: Language Servers {{{
   " Language server for JavaScript and TypeScript
-  Plug 'sourcegraph/javascript-typescript-langserver', { 'do': 'npm install && npm run build' }
+  " Plug 'sourcegraph/javascript-typescript-langserver', { 'do': 'npm install && npm run build' }
+"" }}}
+
+"" Plugin: CoC(Conquer of Completion) {{{
+  " Intellisense engine, full language server protocol support as VSCode
+  " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 "" }}}
 
 "" Plugin: LanguageClient(NeoVIM only) {{{
