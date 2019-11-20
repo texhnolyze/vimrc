@@ -21,6 +21,7 @@
   \ 'javascript': ['eslint'],
   \ 'python': ['flake8'],
   \ 'terraform': ['tflint'],
+  \ 'sh': ['language_server'],
   \ }
   " Set aliases from one filetype to another
   let g:ale_linter_aliases={
@@ -206,10 +207,12 @@
     let g:deoplete#sources#go#use_cache=1
     let g:deoplete#sources#go#json_directory='~/.cache/deoplete/go/$GOOS_$GOARCH'
   endif
+
   " Vim source for Neocomplete/Deoplete
   Plug 'Shougo/neco-vim', { 'for': ['vim'] }
   " Insert mode completion of words in adjacent tmux panes
   Plug 'wellle/tmux-complete.vim'
+
   " Run deoplete automatically
   let g:deoplete#enable_at_startup=1
   " When a capital letter is included in input, does not ignore
@@ -241,20 +244,22 @@
 "" Plugin: LanguageClient(NeoVIM only) {{{
   " Support Language Server Protocol for NeoVIM
   if has('nvim')
-    Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
     " Automatically start language servers
     let g:LanguageClient_autoStart=1
     " Define commands to execute to start language servers
     let g:LanguageClient_serverCommands={
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'go': ['go-langserver'],
     \ 'typescript': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ 'typescript.tsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ 'tsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ 'javascript': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ 'javascript.jsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ 'jsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
+    \ 'sh': ['bash-language-server', 'start'],
     \ }
-    "" \ 'python': ['pyls'],
+    " \ 'python': ['pyls'],
 
     " Disable diagnostics integration
     let g:LanguageClient_diagnosticsEnable=0
@@ -263,7 +268,11 @@
 
     nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
     nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> gs :call LanguageClient_textDocument_documentSymbol()<CR>
     nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> <F5> :call LanguageClient_textDocument_codeAction()<CR>
+    nnoremap <silent> <F6> :call LanguageClient_textDocument_references()<CR>
+    nnoremap <silent> <Alt+l> :call LanguageClient_textDocument_formatting()<CR>
   endif
 "" }}}
 
