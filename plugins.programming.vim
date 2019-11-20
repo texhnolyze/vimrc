@@ -9,6 +9,8 @@
   let g:javascript_plugin_jsdoc=1
 	" Improve syntax highlighting
   hi def link jsFuncCall Function
+  " Autoformat rust code on save
+  let g:rustfmt_autosave=1
 "" }}}
 
 "" Plugin: ALE {{{
