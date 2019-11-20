@@ -7,5 +7,5 @@
 
 "" Plugin: WakaTime {{{
   " Productivity metrics, goals, leaderboards, and automatic time tracking
-  Plug 'wakatime/vim-wakatime'
+  " Plug 'wakatime/vim-wakatime'
 "" }}}
