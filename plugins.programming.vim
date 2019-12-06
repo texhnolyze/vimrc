@@ -294,8 +294,8 @@
     let g:UltiSnipsUsePythonVersion=2
   endif
   " Configure keys trigerring UltiSnips
-  let g:UltiSnipsJumpForwardTrigger='<C-n>'
-  let g:UltiSnipsJumpBackwardTrigger='<C-b>'
+  let g:UltiSnipsJumpForwardTrigger='<C-l>'
+  let g:UltiSnipsJumpBackwardTrigger='<C-h>'
   let g:UltiSnipsListSnippets='<Tab>l'
   " Enable of usage of CR for both newlines and snippet completion
   let g:UltiSnipsExpandTrigger='<NOP>'
@@ -316,9 +316,7 @@
 
   " If you want :UltiSnipsEdit to split your window
   let g:UltiSnipsEditSplit='vertical'
-
   "Set save and search dirs for private snippets
-  let g:UltiSnipsSnippetsDir='~/.vim/snippet-definitions/'
   let g:UltiSnipsSnippetDirectories=['UltiSnips', 'snippet-definitions']
 "" }}}
 
