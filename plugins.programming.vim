@@ -181,7 +181,7 @@
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
   " Javascript source for Deoplete
-  Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript'] }
+  Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript'], 'do': 'npm install -g tern' }
   " Add extra filetypes
   let g:tern#filetypes=['jsx', 'javascript.jsx', 'vue']
   " Use tern_for_vim
