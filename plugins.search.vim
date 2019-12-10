@@ -2,7 +2,7 @@
 
 "" Plugin: CtrlP {{{
   " Full path fuzzy file, buffer, mru, tag finder for Vim
-  Plug 'ctrlpvim/ctrlp.vim'
+  " Plug 'ctrlpvim/ctrlp.vim'
   " Change default mapping
   let g:ctrlp_map='<c-p>'
   " Change default command
@@ -24,6 +24,9 @@
   " A general-purpose command-line fuzzy finder
   Plug 'junegunn/fzf', { 'do': 'yes \| ./install --all --no-update-rc' }
   Plug 'junegunn/fzf.vim'
+
+  nnoremap <silent> <C-p> :<C-u>Files<CR>
+  nnoremap <silent> <C-g> :<C-u>Rg<CR>
 "" }}}
 
 "" Plugin: Easymotion {{{
