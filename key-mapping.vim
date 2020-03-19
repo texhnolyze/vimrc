@@ -24,6 +24,12 @@ nnoremap <Leader>r :redraw!<CR>
 nnoremap Q <nop>
 " Switching search-highlighting off until next search
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
+" Quickly copy/paste from and to system clipboard
+nnoremap <Leader>y "+y
+nnoremap <Leader>yy "+yy
+nnoremap <Leader>Y "+Y
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
 
 " Quickly move current line above or below
 nnoremap <C-k><C-k> :<C-u>execute 'move -1-'. v:count1<CR>
