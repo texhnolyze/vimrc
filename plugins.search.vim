@@ -22,11 +22,17 @@
 "" Plugin: Fzf {{{
   " Full path fuzzy file, buffer, mru, tag finder for Vim
   " A general-purpose command-line fuzzy finder
-  Plug 'junegunn/fzf', { 'do': 'yes \| ./install --all --no-update-rc' }
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 
+  command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({ 'options': '--delimiter : --nth 4..' }), <bang>0)
+
   nnoremap <silent> <C-p> :<C-u>Files<CR>
-  nnoremap <silent> <C-g> :<C-u>Rg<CR>
+  nnoremap <silent> <C-g> :<C-u>Rg!<CR>
+  nnoremap <silent> <C-c> :<C-u>BCommits!<CR>
 "" }}}
 
 "" Plugin: Easymotion {{{

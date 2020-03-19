@@ -8,6 +8,8 @@
 "" Plugin: Vim Fugitive {{{
   " The best Git wrapper
   Plug 'tpope/vim-fugitive'
+  " Always open splits Gdiff splits vertically
+  set diffopt+=vertical
   " Key mappings for convenience
   nnoremap <Leader>gd :Gvdiff<CR>
   nnoremap <Leader>gD :Gvdiff HEAD<CR>
