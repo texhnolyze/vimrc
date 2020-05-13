@@ -423,6 +423,11 @@
   \}
 "" }}}
 
+" Saltstack
+"" Plugin: Salt Vim {{{
+  " Syntax highlighting for salt state files
+  Plug 'saltstack/salt-vim', { 'for': ['sls'] }
+"" }}}
 
 " Markdown
 "" Plugin: Goyo {{{
