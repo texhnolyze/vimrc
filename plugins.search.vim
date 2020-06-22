@@ -69,6 +69,14 @@
   nnoremap <silent> <Leader>gl :<C-u>BCommits!<CR>
 "" }}}
 
+"" Plugin: Ferret {{{
+  " Provides multi file search/replace with rg, ag or ack
+  Plug 'wincent/ferret'
+  " Remap ferret search/replace keybindings
+  nmap <Leader>s <Plug>(FerretAck)
+  nmap <Leader>sw <Plug>(FerretAckWord)
+  nmap <Leader>r <Plug>(FerretAcks)
+"" }}}
 
 "" Plugin: Easymotion {{{
   " Provides a much simpler way to use motions in Vim

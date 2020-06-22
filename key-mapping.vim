@@ -19,7 +19,7 @@ set mousehide
 " <Esc> is too annoying to type
 inoremap jkj <Esc>
 " Screen sucks, redraw everything
-nnoremap <Leader>r :redraw!<CR>
+nnoremap <Leader>rd :redraw!<CR>
 " Make Q meaningless (Q: Entering to Ex mode)
 nnoremap Q <nop>
 " Switching search-highlighting off until next search
