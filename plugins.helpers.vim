@@ -6,10 +6,9 @@
   Plug 'mattn/webapi-vim'
 "" }}}
 
-"" Plugin: Sudo-Vim {{{
-  " Sudo will ask for your password if need be
-  " Usage: :e sudo:/etc/passwd
-  Plug 'vim-scripts/sudo.vim'
+"" Plugin: Eunuch.vim {{{
+  " Provides vim commands for common UNIX shell commands
+  Plug 'tpope/vim-eunuch'
 "" }}}
 
 "" Plugin: Vim QF {{{
