@@ -7,8 +7,6 @@
   let g:vim_json_syntax_conceal=0
   " Enable syntax highlighting for JSDocs
   let g:javascript_plugin_jsdoc=1
-	" Improve syntax highlighting
-  hi def link jsFuncCall Function
   " Autoformat rust code on save
   let g:rustfmt_autosave=1
 "" }}}
