@@ -72,8 +72,8 @@
 "" Plugin: TaskList {{{
   " Eclipse like task list
   Plug 'vim-scripts/TaskList.vim'
-  " Map TaskList to <leader>tt
-  nnoremap <silent> <leader>tt :TaskList<CR>
+  " Map TaskList to <Leader>tt
+  nnoremap <silent> <Leader>tt :TaskList<CR>
 "" }}}
 
 "" Plugin: Tagbar {{{
@@ -96,8 +96,8 @@
   " Close vim if the only window left open is a NERDTree
   autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTree')
   \ && b:NERDTree.isTabTree()) | q | endif
-  " Map NERDTreeToggle to <leader>n
-  nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+  " Map NERDTreeToggle to <Leader>n
+  nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 "" }}}
 
 "" Plugin: NERDTree Git Plugin {{{

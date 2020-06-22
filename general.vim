@@ -132,6 +132,6 @@ endif
   elseif executable('ack')
     set grepprg=ack\ -H\ --nocolor\ --nogroup
   endif
-  " Set foramt for vimgrep
+  " Set format for vimgrep
   set grepformat=%f:%l:%c:%m
 """ }}}

@@ -159,11 +159,11 @@
   let test#strategy='basic'
   " Exit after testing with jest
   let test#javascript#jest#options='--passWithNoTests'
-  nnoremap <silent> <leader>tf :TestFile<CR>
-  nnoremap <silent> <leader>tn :TestNearest<CR>
-  nnoremap <silent> <leader>ts :TestSuit<CR>
-  nnoremap <silent> <leader>tl :TestLast<CR>
-  nnoremap <silent> <leader>tv :TestVisit<CR>
+  nnoremap <silent> <Leader>tf :TestFile<CR>
+  nnoremap <silent> <Leader>tn :TestNearest<CR>
+  nnoremap <silent> <Leader>ts :TestSuit<CR>
+  nnoremap <silent> <Leader>tl :TestLast<CR>
+  nnoremap <silent> <Leader>tv :TestVisit<CR>
 "" }}}
 
 "" Plugin: EchoDoc {{{

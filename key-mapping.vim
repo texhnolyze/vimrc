@@ -1,6 +1,6 @@
 " key-mapping.vim
 
-" Map <leader> key
+" Map <Leader> key
 let mapleader=","
 let g:mapleader=","
 " Allow cursor keys in insert mode
