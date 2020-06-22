@@ -55,3 +55,11 @@
   " resurrected with tmux-resurrect
   Plug 'tpope/vim-obsession'
 "" }}}
+"
+"" Plugin: Vim Autosave {{{
+  " Enable autosaving on changes of buffer on  changes
+  " in normal mode and on return from insert mode
+  Plug '907th/vim-auto-save'
+  " Enable on startup
+  let g:auto_save=1
+"" }}}
