@@ -13,7 +13,7 @@
 
 "" Plugin: ALE {{{
   " Asynchronous Lint Engine
-  Plug 'w0rp/ale'
+  " Plug 'w0rp/ale'
   " Enable ALE
   let g:ale_enable=1
   " Set the language specific linters
@@ -179,115 +179,214 @@
 
 "" Plugin: Deoplete(NeoVIM only) {{{
   " Dark powered asynchronous completion framework
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
-  " Javascript source for Deoplete
-  Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript'], 'do': 'npm install -g tern' }
-  " Add extra filetypes
-  let g:tern#filetypes=['jsx', 'javascript.jsx', 'vue']
-  " Use tern_for_vim
-  let g:tern#command=['tern']
-  let g:tern#arguments=['--persistent']
-  " Include documentation strings (if found) in the result data
-  let g:deoplete#sources#ternjs#docs=1
-  " Use a case-insensitive compare
-  let g:deoplete#sources#ternjs#case_insensitive=1
-  " Sort the result set
-  let g:deoplete#sources#ternjs#sort=1
-  " Ignore JavaScript keywords when completing
-  let g:deoplete#sources#ternjs#include_keywords=0
+  " if has('nvim')
+    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " else
+    " Plug 'Shougo/deoplete.nvim'
+    " Plug 'roxma/nvim-yarp'
+    " Plug 'roxma/vim-hug-neovim-rpc'
+  " endif
+  " " Javascript source for Deoplete
+  " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript'], 'do': 'npm install -g tern' }
+  " " Add extra filetypes
+  " let g:tern#filetypes=['jsx', 'javascript.jsx', 'vue']
+  " " Use tern_for_vim
+  " let g:tern#command=['tern']
+  " let g:tern#arguments=['--persistent']
+  " " Include documentation strings (if found) in the result data
+  " let g:deoplete#sources#ternjs#docs=1
+  " " Use a case-insensitive compare
+  " let g:deoplete#sources#ternjs#case_insensitive=1
+  " " Sort the result set
+  " let g:deoplete#sources#ternjs#sort=1
+  " " Ignore JavaScript keywords when completing
+  " let g:deoplete#sources#ternjs#include_keywords=0
 
-  " Python source for Deoplete
-  Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
-  " Enable caching of completions for faster results
-  let g:deoplete#sources#jedi#enable_cache=1
-  " Show docstring in preview window
-  let g:deoplete#sources#jedi#show_docstring=0
+  " " Python source for Deoplete
+  " Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
+  " " Enable caching of completions for faster results
+  " let g:deoplete#sources#jedi#enable_cache=1
+  " " Show docstring in preview window
+  " let g:deoplete#sources#jedi#show_docstring=0
 
-  if executable('gocode')
-    " Go source for Deoplete
-    Plug 'zchee/deoplete-go', { 'do': 'make', 'for': ['go'] }
-    " By default(not set), Find the gocode binary in $PATH environment
-    let g:deoplete#sources#go#gocode_binary=$GOPATH.'/bin/gocode'
-    " By default, the completion word list is in the sort order of gocode
-    " Available values are [package, func, type, var, const]
-    let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
-    " Use static json caching Go stdlib package API
-    let g:deoplete#sources#go#use_cache=1
-    let g:deoplete#sources#go#json_directory='~/.cache/deoplete/go/$GOOS_$GOARCH'
-  endif
+  " if executable('gocode')
+    " " Go source for Deoplete
+    " Plug 'zchee/deoplete-go', { 'do': 'make', 'for': ['go'] }
+    " " By default(not set), Find the gocode binary in $PATH environment
+    " let g:deoplete#sources#go#gocode_binary=$GOPATH.'/bin/gocode'
+    " " By default, the completion word list is in the sort order of gocode
+    " " Available values are [package, func, type, var, const]
+    " let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
+    " " Use static json caching Go stdlib package API
+    " let g:deoplete#sources#go#use_cache=1
+    " let g:deoplete#sources#go#json_directory='~/.cache/deoplete/go/$GOOS_$GOARCH'
+  " endif
 
-  " Vim source for Neocomplete/Deoplete
-  Plug 'Shougo/neco-vim', { 'for': ['vim'] }
-  " Insert mode completion of words in adjacent tmux panes
-  Plug 'wellle/tmux-complete.vim'
+  " " Vim source for Neocomplete/Deoplete
+  " Plug 'Shougo/neco-vim', { 'for': ['vim'] }
+  " " Insert mode completion of words in adjacent tmux panes
+  " Plug 'wellle/tmux-complete.vim'
 
-  " Run deoplete automatically
-  let g:deoplete#enable_at_startup=1
-  " When a capital letter is included in input, does not ignore
-  let g:deoplete#enable_smart_case=1
-  " Set the number of the input completion at the time of key input
-  let g:deoplete#auto_complete_start_length=2
-  " Set the limit of candidates
-  let g:deoplete#max_list=32
-  " Close the preview window after completion is done
-  autocmd CompleteDone * pclose!
-  " Disable the preview window
-  set completeopt-=preview
+  " " Run deoplete automatically
+  " let g:deoplete#enable_at_startup=1
+  " " When a capital letter is included in input, does not ignore
+  " let g:deoplete#enable_smart_case=1
+  " " Set the number of the input completion at the time of key input
+  " let g:deoplete#auto_complete_start_length=2
+  " " Set the limit of candidates
+  " let g:deoplete#max_list=32
+  " " Close the preview window after completion is done
+  " autocmd CompleteDone * pclose!
+  " " Disable the preview window
+  " set completeopt-=preview
 
-  " Enable tabbing through autocomplete suggestions
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  " " Enable tabbing through autocomplete suggestions
+  " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "" }}}
 
 "" Plugin: Language Servers {{{
   " Language server for JavaScript and TypeScript
-  " Plug 'sourcegraph/javascript-typescript-langserver', { 'do': 'npm install && npm run build' }
+  " Plug 'theia-ide/typescript-language-server', { 'do': 'yarn && yarn build' }
 "" }}}
 
-"" Plugin: CoC(Conquer of Completion) {{{
+"" Plugin: CoC (Conquer of Completion) {{{
   " Intellisense engine, full language server protocol support as VSCode
-  " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+  " Use tab for trigger completion and navigation
+  inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  " Use <C-Space> to trigger completion
+  inoremap <silent><expr> <C-Space> coc#refresh()
+
+  " Use <CR> to confirm completion including snippets
+  "<C-g>u breaks the undo chain at current position
+  if exists('*complete_info')
+    inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  else
+    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  endif
+
+  " Use <Leader>dk and <Leader>dj to navigate diagnostics
+  nmap <silent> <Leader>dk <Plug>(coc-diagnostic-prev)
+  nmap <silent> <Leader>dj <Plug>(coc-diagnostic-next)
+
+  " GoTo code navigation
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+  " Use K to show documentation in preview window.
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+
+  " Symbol renaming.
+  nmap <Leader>rn <Plug>(coc-rename)
+
+  " Formatting selected code
+  xmap <Leader>f <Plug>(coc-format-selected)
+  nmap <Leader>f <Plug>(coc-format-selected)
+
+  augroup mygroup
+    autocmd!
+    " Setup formatexpr specified filetype(s)
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  augroup end
+
+  " Apply codeAction to the selected region
+  " Example: `<Leader>aap` for current paragraph
+  xmap <Leader>a <Plug>(coc-codeaction-selected)
+  nmap <Leader>a <Plug>(coc-codeaction-selected)
+
+  " Remap keys for applying codeAction to the current buffer
+  nmap <Leader>ac <Plug>(coc-codeaction)
+  " Apply AutoFix to problem on the current line
+  nmap <Leader>qf <Plug>(coc-fix-current)
+
+  " Map function and class text objects
+  xmap if <Plug>(coc-funcobj-i)
+  omap if <Plug>(coc-funcobj-i)
+  xmap af <Plug>(coc-funcobj-a)
+  omap af <Plug>(coc-funcobj-a)
+  xmap ic <Plug>(coc-classobj-i)
+  omap ic <Plug>(coc-classobj-i)
+  xmap ac <Plug>(coc-classobj-a)
+  omap ac <Plug>(coc-classobj-a)
+
+  " Use <C-s> for selections ranges
+  nmap <silent> <C-s> <Plug>(coc-range-select)
+  xmap <silent> <C-s> <Plug>(coc-range-select)
+
+  " Add :Format command to format current buffer
+  command! -nargs=0 Format :call CocAction('format')
+
+  " Add :Imports command for organize imports of the current buffer
+  command! -nargs=0 Imports :call CocAction('runCommand', 'editor.action.organizeImport')
+
+  " Mappings for CoCList
+  " Show all diagnostics
+  nnoremap <silent><nowait> <Space>a :<C-u>CocList diagnostics<CR>
+  " Show commands
+  nnoremap <silent><nowait> <Space>c :<C-u>CocList commands<CR>
+  " Find symbol of current document
+  nnoremap <silent><nowait> <Space>o :<C-u>CocList outline<CR>
+  " Search workspace symbols
+  nnoremap <silent><nowait> <Space>s :<C-u>CocList -I symbols<CR>
 "" }}}
 
 "" Plugin: LanguageClient(NeoVIM only) {{{
   " Support Language Server Protocol for NeoVIM
-  if has('nvim')
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-    " Automatically start language servers
-    let g:LanguageClient_autoStart=1
-    " Define commands to execute to start language servers
-    let g:LanguageClient_serverCommands={
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'go': ['go-langserver'],
-    \ 'typescript': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ 'typescript.tsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ 'tsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ 'javascript': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ 'javascript.jsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ 'jsx': ['node', '$VIM_HOME/plugged/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ 'sh': ['bash-language-server', 'start'],
-    \ }
-    " \ 'python': ['pyls'],
+  " if has('nvim')
+    " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+    " " Automatically start language servers
+    " let g:LanguageClient_autoStart=1
+    " " Define commands to execute to start language servers
+    " let g:LanguageClient_serverCommands={
+    " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    " \ 'go': ['go-langserver'],
+    " \ 'typescript': ['node', '$VIM_HOME/plugged/typescript-language-server/lib/cli.js', '--stdio'],
+    " \ 'typescript.tsx': ['node', '$VIM_HOME/plugged/typescript-language-server/lib/cli.js', '--stdio'],
+    " \ 'tsx': ['node', '$VIM_HOME/plugged/typescript-language-server/lib/cli.js', '--stdio'],
+    " \ 'javascript': ['node', '$VIM_HOME/plugged/typescript-language-server/lib/cli.js', '--stdio'],
+    " \ 'javascript.jsx': ['node', '$VIM_HOME/plugged/typescript-language-server/lib/cli.js', '--stdio'],
+    " \ 'jsx': ['node', '$VIM_HOME/plugged/typescript-language-server/lib/cli.js', '--stdio'],
+    " \ 'sh': ['bash-language-server', 'start'],
+    " \ }
+    " " \ 'python': ['pyls'],
 
-    " Disable diagnostics integration
-    let g:LanguageClient_diagnosticsEnable=0
-    " Set selection UI used when there are multiple entries
-    let g:LanguageClient_selectionUI='fzf'
+    " " Disable diagnostics integration
+    " let g:LanguageClient_diagnosticsEnable=0
+    " " Set selection UI used when there are multiple entries
+    " let g:LanguageClient_selectionUI='fzf'
 
-    nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-    nnoremap <silent> gs :call LanguageClient_textDocument_documentSymbol()<CR>
-    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-    nnoremap <silent> <F5> :call LanguageClient_textDocument_codeAction()<CR>
-    nnoremap <silent> <F6> :call LanguageClient_textDocument_references()<CR>
-    nnoremap <silent> <Alt+l> :call LanguageClient_textDocument_formatting()<CR>
-  endif
+    " nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+    " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+    " nnoremap <silent> gs :call LanguageClient_textDocument_documentSymbol()<CR>
+    " nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+    " nnoremap <silent> <F5> :call LanguageClient_textDocument_codeAction()<CR>
+    " nnoremap <silent> <F6> :call LanguageClient_textDocument_references()<CR>
+    " nnoremap <silent> <Alt+l> :call LanguageClient_textDocument_formatting()<CR>
+  " endif
 "" }}}
 
 "" Plugin: UltiSnips {{{
@@ -357,24 +456,24 @@
   " TODO: Key mapping
   " Tern-based Javascript editing support
   " Hook into omni completion to handle autocompletion and provide more
-  function! BuildTern(info)
-    " info is a dictionary with 3 fields
-    " - name:   name of the plugin
-    " - status: 'installed', 'updated', or 'unchanged'
-    " - force:  set on PlugInstall! or PlugUpdate!
-    if a:info.status == 'installed' || a:info.force
-      !npm install
-    endif
-  endfunction
-  Plug 'marijnh/tern_for_vim', { 'for': ['javascript'], 'do': function('BuildTern') }
-  " Set timeout
-  let g:tern_request_timeout=1
-  " Display argument type hints when the cursor is left over a function
-  let g:tern_show_argument_hints='on_hold'
-  " Display function signature in the completion menu
-  let g:tern_show_signature_in_pum='0'
-  " Disable Shortcuts
-  let g:tern_map_keys=0
+  " function! BuildTern(info)
+    " " info is a dictionary with 3 fields
+    " " - name:   name of the plugin
+    " " - status: 'installed', 'updated', or 'unchanged'
+    " " - force:  set on PlugInstall! or PlugUpdate!
+    " if a:info.status == 'installed' || a:info.force
+      " !npm install
+    " endif
+  " endfunction
+  " Plug 'marijnh/tern_for_vim', { 'for': ['javascript'], 'do': function('BuildTern') }
+  " " Set timeout
+  " let g:tern_request_timeout=1
+  " " Display argument type hints when the cursor is left over a function
+  " let g:tern_show_argument_hints='on_hold'
+  " " Display function signature in the completion menu
+  " let g:tern_show_signature_in_pum='0'
+  " " Disable Shortcuts
+  " let g:tern_map_keys=0
 "" }}}
 
 "" Plugin: Vim Node {{{
