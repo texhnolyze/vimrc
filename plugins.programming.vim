@@ -395,7 +395,7 @@
   Plug 'mattn/emmet-vim', {
   \ 'for': [
   \   'html', 'haml', 'jinja', 'hbs', 'html.handlebars', 'xml',
-  \   'css', 'less', 'sass', 'javascript'
+  \   'css', 'less', 'sass', 'javascript', 'typescript'
   \ ]
   \}
   " Enable all functions, which is equal to
@@ -410,6 +410,12 @@
   \ },
   \ 'javascript': {
   \   'extends': 'jsx',
+  \ },
+  \ 'typescript.tsx': {
+  \   'extends': 'tsx',
+  \ },
+  \ 'typescript': {
+  \   'extends': 'tsx',
   \ },
   \ 'xml': {
   \   'extends': 'html',
