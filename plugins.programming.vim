@@ -150,11 +150,19 @@
   Plug 'tpope/vim-dispatch'
 "" }}}
 
+" Plugin: Vim Tmux Runner {{{
+  " Send commands to tmux
+  " Used to run vim-test in a small tmux pane
+  Plug 'christoomey/vim-tmux-runner'
+"" }}}"
+
 "" Plugin: Vim Test {{{
   " Run your tests at the speed of thought
-  Plug 'janko-m/vim-test'
+  Plug 'janko/vim-test'
   " Make test commands execute using other strategy
   let test#strategy='basic'
+  " set custom jest executable to support vue using babel
+  " let test#javascript#jest#executable = 'npm run --silent test --'
   " Exit after testing with jest
   let test#javascript#jest#options='--passWithNoTests'
   nnoremap <silent> <Leader>tf :TestFile<CR>
