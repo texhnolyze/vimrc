@@ -483,7 +483,7 @@
 
 "" Plugin: Vim Instant Markdown {{{
   " Instant markdown Previews from Vim
-  " Plug 'suan/vim-instant-markdown'
+  Plug 'suan/vim-instant-markdown', {'for': 'markdown', 'do': 'npm install -g instant-markdown-d'}
   " Only refresh on specific events
   let g:instant_markdown_slow=1
   " Manually control to launch the preview window
