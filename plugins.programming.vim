@@ -25,7 +25,7 @@
   \ }
   " Set aliases from one filetype to another
   let g:ale_linter_aliases={
-  \ 'javascript': ['javascript', 'javascript.jsx', 'jsx'],
+  \ 'javascript': ['javascript', 'javascript.jsx', 'jsx', 'vue'],
   \ }
   " No lint everytime for my battery
   let g:ale_lint_on_text_changed='normal'
@@ -386,7 +386,7 @@
   " Syntax file for JavaScript libraries
   " Plug 'othree/javascript-libraries-syntax.vim'
   " Set up used libraries
-  let g:used_javascript_libs='react,jquery,underscore,handlebars'
+  let g:used_javascript_libs='vue,react,jquery,underscore,handlebars'
 "" }}}
 
 " HTML & CSS
