@@ -22,6 +22,21 @@
 "" Plugin: Vim Signify {{{
   " Indicate added, modified and removed lines based on data of VCS
   Plug 'mhinz/vim-signify'
+  " default updatetime 4000ms is not good for async update
+  set updatetime=100
+  " Key mappings for jumping between changed blocks
+  nmap <Leader>gj <plug>(signify-next-hunk)
+  nmap <Leader>gk <plug>(signify-prev-hunk)
+  nmap <Leader>gJ 9999<Leader>gj
+  nmap <Leader>gK 9999<leader>gk
+  " Key mappings to diff hunks
+  noremap <Leader>ghd :SignifyHunkDiff
+  noremap <Leader>ghu :SignifyHunkUndo
+  " Key mappings for git hunk text objects
+  omap ih <plug>(signify-motion-inner-pending)
+  xmap ih <plug>(signify-motion-inner-visual)
+  omap ah <plug>(signify-motion-outer-pending)
+  xmap ah <plug>(signify-motion-outer-visual)
 "" }}}
 
 "" Plugin: Gundo {{{
