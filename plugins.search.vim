@@ -81,11 +81,12 @@
 "" Plugin: Easymotion {{{
   " Provides a much simpler way to use motions in Vim
   Plug 'Lokaltog/vim-easymotion'
-
   " Set easymotion line and sneak keybindings
   nmap s <Plug>(easymotion-overwin-f)
   map <Leader>j <Plug>(easymotion-j)
   map <Leader>k <Plug>(easymotion-k)
+  map <Leader>l <Plug>(easymotion-lineforward)
+  map <Leader>h <Plug>(easymotion-linebackward)
 "" }}}
 
 "" Plugin: Vim Signature {{{
