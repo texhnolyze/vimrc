@@ -12,7 +12,7 @@
   let g:ctrlp_max_files=0
   let g:ctrlp_max_depth=60
   " Set custom ignore folder/files for file search
-  let g:ctrlp_custom_ignore = {
+  let g:ctrlp_custom_ignore={
   \ 'dir':  '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$',
   \ 'file': '\v\.(exe|so|dll|log)$',
   \ 'link': '',
@@ -148,7 +148,7 @@
   " A plugin of NERDTree showing git status flags
   Plug 'Xuyuanp/nerdtree-git-plugin'
   " Use this variable to change symbols
-  let g:NERDTreeIndicatorMapCustom = {
+  let g:NERDTreeIndicatorMapCustom={
   \ 'Modified'  : '*',
   \ 'Staged'    : '✚',
   \ 'Untracked' : '✭',

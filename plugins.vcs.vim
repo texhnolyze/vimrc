@@ -30,8 +30,8 @@
   nmap <Leader>gJ 9999<Leader>gj
   nmap <Leader>gK 9999<leader>gk
   " Key mappings to diff hunks
-  noremap <Leader>ghd :SignifyHunkDiff
-  noremap <Leader>ghu :SignifyHunkUndo
+  noremap <Leader>ghd :SignifyHunkDiff<CR>
+  noremap <Leader>ghu :SignifyHunkUndo<CR>
   " Key mappings for git hunk text objects
   omap ih <plug>(signify-motion-inner-pending)
   xmap ih <plug>(signify-motion-inner-visual)
