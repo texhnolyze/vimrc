@@ -69,6 +69,7 @@
     \   '--prompt=ProjectFilesRg> ',
     \   '--delimiter=:',
     \   '--nth=3..',
+    \   '--color=hl:108,hl+:108',
     \ ],
     \}
 
