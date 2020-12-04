@@ -30,41 +30,83 @@
   endfunction
 
   function! s:git_changed_files()
-     return systemlist('git -C ' . s:find_git_root() . ' ls-files --modified --others --exclude-standard --full-name 2> /dev/null')
+     return systemlist(
+     \ 'git -C ' . s:find_git_root() .
+     \ ' ls-files --modified --others --exclude-standard --full-name 2> /dev/null'
+     \ )
   endfunction
 
   " Advanced ripgrep integration retrigger ripgrep on query change
   " see: https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
-  function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case --hidden --follow %s || true'
-    let initial_command = printf(command_fmt, shellescape(a:query))
-    let reload_command = printf(command_fmt, '{q}')
-    let options = { 'options': ['--phony', '--query', a:query, '--bind', 'change:reload:' . reload_command] }
+  function! RgFzf(query, fullscreen)
+    let command_fmt='rg --line-number --no-heading %s || true'
+    let initial_command=printf(command_fmt, shellescape(a:query))
+    let reload_command=printf(command_fmt, '{q}')
+
+    let options={
+    \ 'options': [
+    \   '--phony',
+    \   '--query',
+    \   a:query,
+    \   '--bind',
+    \   'change:reload:' . reload_command,
+    \ ]
+    \}
     if a:fullscreen
-      let options = fzf#vim#with_preview(options)
+      let options=fzf#vim#with_preview(options)
     endif
+
     call fzf#vim#grep(initial_command, 1, options, a:fullscreen)
   endfunction
-  command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
   " Search through current git repo not current folder
-  function! ProjectFiles(query, fullscreen)
-    let command = 'rg --column --line-number --no-heading --color=always --smart-case --hidden --follow -- ' . a:query
-    let options = { 'dir': s:find_git_root(), 'options': '--delimiter : --nth 4..'  }
+  function! GitFilesRg(query, fullscreen)
+    let command='rg --line-number --no-heading -- ' . a:query
+
+    let options={
+    \ 'dir': s:find_git_root(),
+    \ 'options': [
+    \   '--prompt=ProjectFilesRg> ',
+    \   '--delimiter=:',
+    \   '--nth=3..',
+    \ ],
+    \}
+
     if a:fullscreen
-      let options = fzf#vim#with_preview(options)
+      let options=fzf#vim#with_preview(options)
     endif
+
     call fzf#vim#grep(command, 1, options, a:fullscreen)
   endfunction
-  command! -nargs=* -bang GFilesRg call ProjectFiles(shellescape(<q-args>), <bang>0)
-  command! -nargs=* -bang GChangedFilesRg call ProjectFiles(shellescape(<q-args>) . ' ' . join(s:git_changed_files()), <bang>0)
+
+  command! -bang ProjectFiles
+    \ call fzf#vim#files(
+    \   s:find_git_root(),
+    \   fzf#vim#with_preview({
+    \     'options': [
+    \       '--prompt=ProjectFiles> ',
+    \       '--delimiter=/',
+    \       '--with-nth=-3..',
+    \     ],
+    \   }),
+    \   <bang>0)
+
+  command! -nargs=* -bang RG call RgFzf(<q-args>, <bang>0)
+
+  command! -nargs=* -bang ProjectFilesRg
+    \ call GitFilesRg(shellescape(<q-args>), <bang>0)
+
+  command! -nargs=* -bang ChangedProjectFilesRg
+    \ call GitFilesRg(
+    \   shellescape(<q-args>) . ' ' . join(s:git_changed_files()),
+    \   <bang>0)
 
   " Mappings for searches of files, content and commits
-  nnoremap <silent> <C-p> :<C-u>GFiles!<CR>
+  nnoremap <silent> <C-p> :<C-u>ProjectFiles!<CR>
   nnoremap <silent> <Leader>gf :<C-u>GFiles!?<CR>
   nnoremap <silent> <C-f> :<C-u>RG!<CR>
-  nnoremap <silent> <C-g> :<C-u>GFilesRg!<CR>
-  nnoremap <silent> <Leader>gg :<C-u>GChangedFilesRg!<CR>
+  nnoremap <silent> <C-g> :<C-u>ProjectFilesRg!<CR>
+  nnoremap <silent> <Leader>gg :<C-u>ChangedProjectFilesRg!<CR>
   nnoremap <silent> <C-c> :<C-u>Commits!<CR>
   nnoremap <silent> <Leader>gl :<C-u>BCommits!<CR>
 "" }}}
