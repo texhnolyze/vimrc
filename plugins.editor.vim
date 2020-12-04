@@ -5,10 +5,14 @@
   Plug 'ntpeters/vim-better-whitespace'
   " Disable this plugin for specific file types
   let g:better_whitespace_filetypes_blacklist=[
-  \ 'diff', 'gitcommit', 'unite', 'qf', 'help', 'nerdtree'
+  \ 'diff', 'gitcommit', 'unite', 'qf', 'help', 'nerdtree', 'markdown'
   \ ]
   " Strip all trailing whitespace everytime save the file
-  autocmd BufWritePre * StripWhitespace
+  let g:better_whitespace_enabled=1
+  let g:strip_whitespace_on_save=1
+  let g:strip_whitespace_confirm=0
+  " Don't strip whitespce in markdown files as it is used for formatting
+  autocmd FileType markdown DisableStripWhitespaceOnSave
 "" }}}
 
 "" Plugin: Targets {{{

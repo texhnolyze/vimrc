@@ -57,7 +57,7 @@
 "" }}}
 "
 "" Plugin: Vim Autosave {{{
-  " Enable autosaving on changes of buffer on  changes
+  " Enable autosaving on changes of buffer on changes
   " in normal mode and on return from insert mode
   " Plug '907th/vim-auto-save'
   " Enable on startup
