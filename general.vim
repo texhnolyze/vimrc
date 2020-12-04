@@ -22,7 +22,7 @@ set tags=./tags;$HOME
 " Add empty newlines at the end of files
 set endofline
 " Automatically change window's cwd to file's dir
-set autochdir
+" set autochdir
 " Set path to viminfo
 if !has('nvim')
   set viminfo='100,n$HOME/.viminfo
