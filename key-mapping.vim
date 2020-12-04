@@ -35,6 +35,9 @@ nnoremap <Leader>P "+P
 nnoremap <C-k><C-k> :<C-u>execute 'move -1-'. v:count1<CR>
 nnoremap <C-j><C-j> :<C-u>execute 'move +'. v:count1<CR>
 
+" Search/Replace word under cursor
+nnoremap <Leader>rw :<C-u>%s/\<<C-r><C-w>\>/
+
 """ Hex Editor {{{
   " Map HexEditToggle to <F9>
   nnoremap <silent> <F9> :call HexEditToggle()<CR>
