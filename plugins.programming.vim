@@ -322,6 +322,7 @@
   nmap <Leader>ac <Plug>(coc-codeaction)
   " Apply AutoFix to problem on the current line
   nmap <Leader>qf <Plug>(coc-fix-current)
+  nmap <A-CR> <Plug>(coc-fix-current)
 
   " Map function and class text objects
   xmap if <Plug>(coc-funcobj-i)
