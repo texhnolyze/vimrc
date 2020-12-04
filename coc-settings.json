@@ -1,7 +1,22 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "typescript",
+    "javascript",
+    "json",
+    "html",
+    "css",
+    "scss",
+    "markdown"
+  ],
+  "list.normalMappings": {
+    "s": "action:split",
+    "v": "action:vsplit",
+    "t": "action:tabe",
+    "o": "action:open",
+    "p": "action:preview"
+  },
+  "cSpell.ignorePaths": [".git", "node_modules"],
   "eslint.autoFixOnSave": true,
-  "cSpell.ignorePaths": [
-    ".git",
-    "node_modules"
-  ]
+  "tslint.autoFixOnSave": true,
+  "diagnostic.checkCurrentLine": true
 }
