@@ -21,5 +21,10 @@
   "diagnostic.checkCurrentLine": true,
   "snippets.ultisnips.directories": [
     "snippet-definitions"
+  ],
+  "cSpell.userWords": [
+    "Zustandswerte",
+    "paginator",
+    "pipeable"
   ]
 }
