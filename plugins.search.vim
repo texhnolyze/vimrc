@@ -39,7 +39,7 @@
   " Advanced ripgrep integration retrigger ripgrep on query change
   " see: https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
   function! RgFzf(query, fullscreen)
-    let command_fmt='rg --line-number --no-heading %s || true'
+    let command_fmt='rg --line-number --no-heading --no-ignore-vcs %s || true'
     let initial_command=printf(command_fmt, shellescape(a:query))
     let reload_command=printf(command_fmt, '{q}')
 
