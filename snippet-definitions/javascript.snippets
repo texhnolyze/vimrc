@@ -1,5 +1,5 @@
 ### Util Snippets
-snippet fn "arrow fn (js)"
+snippet fn "() => {}"
 ($1) => $2
 endsnippet
 
@@ -7,11 +7,11 @@ snippet log "console.log()"
 console.log($1)
 endsnippet
 
-snippet logw "console.log() (js)"
+snippet logw "console.warn()"
 console.warn($1)
 endsnippet
 
-snippet loge "console.log() (js)"
+snippet loge "console.error()"
 console.error($1)
 endsnippet
 
@@ -30,6 +30,12 @@ endsnippet
 
 snippet ita "it async block (jest)"
 it('${1:description}', async () => {
+	${VISUAL}$2
+})
+endsnippet
+
+snippet itd "it async done block (jest)"
+it('${1:description}', done => {
 	${VISUAL}$2
 })
 endsnippet
@@ -74,7 +80,7 @@ snippet expms "expect match snapshot (jest)"
 expect(${1:result}).toMatchSnapshot()
 endsnippet
 
-snippet expoc "expect called with (jest)"
+snippet expoc "expect object containing (jest)"
 expect.objectContaining({ $1 })
 endsnippet
 

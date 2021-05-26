@@ -1,16 +1,104 @@
-snippet des "describe (ts)" b
-describe("${1:description}", () => {
-	$0
-});
+### Util Snippets
+snippet fn "() => {}"
+($1) => $2
 endsnippet
 
-snippet it "it (ts)" b
-it("${1:description}", () => {
-	$0
-});
+snippet log "console.log()"
+console.log($1)
 endsnippet
 
-snippet expe "expect (ts)" b
-expect($1).toEqual($0)
+snippet logw "console.warn()"
+console.warn($1)
+endsnippet
+
+snippet loge "console.error()"
+console.error($1)
+endsnippet
+
+### Jest Testing Snippets
+snippet des "describe block (jest)"
+describe('${1:description}', () => {
+	${VISUAL}$2
+})
+endsnippet
+
+snippet it "it block (jest)"
+it('${1:description}', () => {
+	${VISUAL}$2
+})
+endsnippet
+
+snippet ita "it async block (jest)"
+it('${1:description}', async () => {
+	${VISUAL}$2
+})
+endsnippet
+
+snippet itd "it async done block (jest)"
+it('${1:description}', done => {
+	${VISUAL}$2
+	done()
+})
+endsnippet
+
+snippet bef "before each block (jest)"
+beforeEach(() => {
+	${VISUAL}$1
+})
+endsnippet
+
+snippet aft "after each block (jest)"
+afterEach(() => {
+	${VISUAL}$1
+})
+endsnippet
+
+snippet befa "before all block (jest)"
+beforeAll(() => {
+	${VISUAL}$1
+})
+endsnippet
+
+snippet afta "after all block (jest)"
+afterAll(() => {
+	${VISUAL}$1
+})
+endsnippet
+
+snippet jfn "mock fn (jest)"
+jest.fn($1)
+endsnippet
+
+snippet exp "expect to (jest)"
+expect(${1:result}).to$2
+endsnippet
+
+snippet expe "expect equal (jest)"
+expect(${1:result}).toEqual($2)
+endsnippet
+
+snippet expms "expect match snapshot (jest)"
+expect(${1:result}).toMatchSnapshot()
+endsnippet
+
+snippet expoc "expect object containing (jest)"
+expect.objectContaining({ $1 })
+endsnippet
+
+snippet expcw "expect called with (jest)"
+expect($1).toHaveBeenCalledWith($2)
+endsnippet
+
+### Vue Testing Snippets
+snippet mnt "wrapper = mountComponent (vue-test)"
+const wrapper = mountComponent($1)
+endsnippet
+
+### Angular Snippets
+snippet prov "useValue provider (ng tests)"
+{
+	provide: $1,
+	useValue: $2
+}
 endsnippet
 
