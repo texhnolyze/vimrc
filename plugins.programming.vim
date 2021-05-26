@@ -254,33 +254,44 @@
   " Intellisense engine, full language server protocol support as VSCode
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  " Use tab for trigger completion and navigation
+  " Use tab for trigger completion with characters ahead and navigate.
+  " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+  " other plugin before putting this into your config.
   inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
   function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
   endfunction
 
-  " Use <C-Space> to trigger completion
-  inoremap <silent><expr> <C-Space> coc#refresh()
-
-  " Use <CR> to confirm completion including snippets
-  "<C-g>u breaks the undo chain at current position
-  if exists('*complete_info')
-    inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  " Use <c-space> to trigger completion.
+  if has('nvim')
+    inoremap <silent><expr> <C-Space> coc#refresh()
   else
-    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <silent><expr> <C-@> coc#refresh()
   endif
+
+  " Make <CR> auto-select the first completion item and notify coc.nvim to
+  " format on enter, <CR> could be remapped by other vim plugin
+  inoremap <silent> <CR> <C-r>=<SID>confirm_selection()<CR>
+
+  function! s:confirm_selection() abort
+    if pumvisible()
+      return coc#_select_confirm()
+    else
+      return "\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
+    endif
+  endfunction
 
   " Use <Leader>dk and <Leader>dj to navigate diagnostics
   nmap <silent> <Leader>dk <Plug>(coc-diagnostic-prev)
   nmap <silent> <Leader>dj <Plug>(coc-diagnostic-next)
 
-  " GoTo code navigation
+  " GoTo code navigation.
   nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
@@ -288,11 +299,14 @@
 
   " Use K to show documentation in preview window.
   nnoremap <silent> K :call <SID>show_documentation()<CR>
+
   function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
       execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+      call CocActionAsync('doHover')
     else
-      call CocAction('doHover')
+      execute '!' . &keywordprg . " " . expand('<cword>')
     endif
   endfunction
 
@@ -315,14 +329,14 @@
 
   " Apply codeAction to the selected region
   " Example: `<Leader>aap` for current paragraph
-  xmap <Leader>a <Plug>(coc-codeaction-selected)
-  nmap <Leader>a <Plug>(coc-codeaction-selected)
+  xmap <silent> <Leader>a <Plug>(coc-codeaction-selected)
+  nmap <silent> <Leader>a <Plug>(coc-codeaction-selected)
 
   " Remap keys for applying codeAction to the current buffer
-  nmap <Leader>ac <Plug>(coc-codeaction)
+  nmap <silent> <Leader>ac <Plug>(coc-codeaction)
   " Apply AutoFix to problem on the current line
   nmap <Leader>qf <Plug>(coc-fix-current)
-  nmap <A-CR> <Plug>(coc-fix-current)
+  nmap <silent> <A-CR> <Plug>(coc-codeaction-line)
 
   " Map function and class text objects
   xmap if <Plug>(coc-funcobj-i)
@@ -344,15 +358,23 @@
   " Add :Imports command for organize imports of the current buffer
   command! -nargs=0 Imports :call CocAction('runCommand', 'editor.action.organizeImport')
 
-  " Mappings for CoCList
-  " Show all diagnostics
-  nnoremap <silent><nowait> <Space>a :<C-u>CocList diagnostics<CR>
-  " Show commands
-  nnoremap <silent><nowait> <Space>c :<C-u>CocList commands<CR>
-  " Find symbol of current document
-  nnoremap <silent><nowait> <Space>o :<C-u>CocList outline<CR>
-  " Search workspace symbols
-  nnoremap <silent><nowait> <Space>s :<C-u>CocList -I symbols<CR>
+" Mappings for CoCList
+" Show all diagnostics.
+  nnoremap <silent><nowait> <Space>a  :<C-u>CocList diagnostics<cr>
+  " Manage extensions.
+  nnoremap <silent><nowait> <Space>e  :<C-u>CocList extensions<cr>
+  " Show commands.
+  nnoremap <silent><nowait> <Space>c  :<C-u>CocList commands<cr>
+  " Find symbol of current document.
+  nnoremap <silent><nowait> <Space>o  :<C-u>CocList outline<cr>
+  " Search workspace symbols.
+  nnoremap <silent><nowait> <Space>s  :<C-u>CocList -I symbols<cr>
+  " Do default action for next item.
+  nnoremap <silent><nowait> <Space>j  :<C-u>CocNext<CR>
+  " Do default action for previous item.
+  nnoremap <silent><nowait> <Space>k  :<C-u>CocPrev<CR>
+  " Resume latest coc list.
+  nnoremap <silent><nowait> <Space>p  :<C-u>CocListResume<CR>
 "" }}}
 
 "" Plugin: LanguageClient(NeoVIM only) {{{
@@ -391,39 +413,40 @@
 "" }}}
 
 "" Plugin: UltiSnips {{{
-  " Snippet engine for Vim
-  Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-  " Explicitly set Python version to use
-  if has('python3')
-    let g:UltiSnipsUsePythonVersion=3
-  else
-    let g:UltiSnipsUsePythonVersion=2
-  endif
-  " Configure keys trigerring UltiSnips
-  let g:UltiSnipsJumpForwardTrigger='<C-l>'
-  let g:UltiSnipsJumpBackwardTrigger='<C-h>'
-  let g:UltiSnipsListSnippets='<Tab>l'
-  " Enable of usage of CR for both newlines and snippet completion
-  let g:UltiSnipsExpandTrigger='<NOP>'
-  let g:ulti_expand_res=0
-  inoremap <silent> <CR> <C-r>=<SID>ExpandSnippetOrReturnEmptyString()<CR>
-  function! s:ExpandSnippetOrReturnEmptyString()
-    if pumvisible()
-      let snippet=UltiSnips#ExpandSnippet()
-      if g:ulti_expand_res > 0
-          return snippet
-      else
-          return "\<C-y>\<CR>"
-      endif
-    else
-        return "\<CR>"
-    endif
-  endfunction
+  " " Snippet engine for Vim
+  " Plug 'SirVer/ultisnips'
+  " Plug 'honza/vim-snippets'
+  " " Explicitly set Python version to use
+  " if has('python3')
+    " let g:UltiSnipsUsePythonVersion=3
+  " else
+    " let g:UltiSnipsUsePythonVersion=2
+  " endif
+  " " Configure keys trigerring UltiSnips
+  " let g:UltiSnipsJumpForwardTrigger='<C-l>'
+  " let g:UltiSnipsJumpBackwardTrigger='<C-h>'
+  " let g:UltiSnipsListSnippets='<Tab>l'
+  " " Enable of usage of CR for both newlines and snippet completion
+  " let g:UltiSnipsExpandTrigger='<NOP>'
+  " let g:ulti_expand_res=0
+  " inoremap <silent> <CR> <C-r>=<SID>ExpandSnippetOrReturnEmptyString()<CR>
+  " function! s:ExpandSnippetOrReturnEmptyString()
+    " if pumvisible()
+      " let snippet=UltiSnips#ExpandSnippet()
+      " if g:ulti_expand_res > 0
+          " return snippet
+      " else
+          " return "\<C-y>\<CR>"
+      " endif
+    " else
+        " return "\<CR>"
+    " endif
+  " endfunction
 
-  " If you want :UltiSnipsEdit to split your window
-  let g:UltiSnipsEditSplit='vertical'
-  "Set save and search dirs for private snippets
-  let g:UltiSnipsSnippetDirectories=['UltiSnips', 'snippet-definitions']
+  " " If you want :UltiSnipsEdit to split your window
+  " let g:UltiSnipsEditSplit='vertical'
+  " "Set save and search dirs for private snippets
+  " let g:UltiSnipsSnippetDirectories=['~/.config/nvim/snippet-definitions']
 "" }}}
 
 "" Plugin: Endwise {{{

@@ -18,5 +18,8 @@
   "cSpell.ignorePaths": [".git", "node_modules"],
   "eslint.autoFixOnSave": true,
   "tslint.autoFixOnSave": true,
-  "diagnostic.checkCurrentLine": true
+  "diagnostic.checkCurrentLine": true,
+  "snippets.ultisnips.directories": [
+    "snippet-definitions"
+  ]
 }
